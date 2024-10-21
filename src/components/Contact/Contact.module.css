@@ -1,0 +1,25 @@
+.contact {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+
+  border-radius: 4px;
+  padding: 10px;
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+
+.npWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactBtn {
+  border: 1px solid black;
+  height: 40px;
+  background-color: lightgray;
+}
+
+.icon {
+  margin-right: 5px;
+}
