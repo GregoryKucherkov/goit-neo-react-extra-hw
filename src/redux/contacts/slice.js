@@ -5,6 +5,7 @@ import {
   editContact,
   fetchContacts,
 } from "./operations";
+import { logOutOperation } from "../auth/operations";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -46,11 +47,7 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = null;
         const updatedCntct = action.payload;
-        //
-        console.log("slice");
 
-        console.log("state.items", state.items);
-        // state.items = action.payload;
         state.items = state.items.map((contact) =>
           contact.id === updatedCntct.id
             ? { ...contact, ...updatedCntct }
@@ -66,7 +63,12 @@ const contactsSlice = createSlice({
           (contact) => contact.id !== action.payload.id
         );
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(logOutOperation.fulfilled, (state) => {
+        state.loading = false;
+        state.error = null;
+        state.items = [];
+      });
   },
 });
 

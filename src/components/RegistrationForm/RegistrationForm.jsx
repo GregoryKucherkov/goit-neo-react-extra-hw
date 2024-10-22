@@ -12,7 +12,7 @@ const initialValues = {
 const FormValidSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too Short!")
-    .max(20, "Too Long!")
+    .max(30, "Too Long!")
     .required("Required"),
   email: Yup.string()
     .min(5, "Too Short!")
@@ -21,7 +21,7 @@ const FormValidSchema = Yup.object().shape({
     .required("Required"),
   password: Yup.string()
     .min(7, "Too Short!")
-    .max(20, "Too Long!")
+    .max(50, "Too Long!")
     .required("Required"),
 });
 

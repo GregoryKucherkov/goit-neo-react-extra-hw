@@ -15,28 +15,28 @@ const clearAuthHeader = () => {
 
 export const registerOperation = createAsyncThunk(
   "auth/register",
-  async (userData, rejectWithValue) => {
+  async (userData, thunkAPI) => {
     try {
       const { data } = await axios.post("users/signup", userData);
 
       setAuthHeader(data.token);
       return data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
 
 export const logInOperation = createAsyncThunk(
   "auth/logIn",
-  async (userData, rejectWithValue) => {
+  async (userData, thunkAPI) => {
     try {
-      const data = await axios.post("users/login", userData);
+      const { data } = await axios.post("users/login", userData);
 
       setAuthHeader(data.token);
       return data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
